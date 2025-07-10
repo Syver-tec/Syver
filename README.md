@@ -46,7 +46,6 @@ Syver/
 │   └── fonts/              # Fontes customizadas
 │       └── README.md
 ├── README.md               # Este arquivo
-└── vercel.json             # Configuração para deploy
 ```
 
 ## 🛠️ Tecnologias Utilizadas
@@ -70,29 +69,15 @@ Syver/
 2. **Abra** o `index.html` no navegador
 3. **Edite** os arquivos conforme necessário
 
-## 🌐 Deploy
+## 🌐 Deploy no Netlify
 
-### Vercel (Recomendado)
-
-1. **Instale o Vercel CLI:**
-   ```bash
-   npm install -g vercel
-   ```
-2. **Login:**
-   ```bash
-   vercel login
-   ```
-3. **Deploy:**
-   ```bash
-   vercel --prod
-   ```
-4. **Acesse a URL** gerada pelo Vercel
-
-### Netlify
 1. Acesse [netlify.com](https://netlify.com)
-2. Faça login
-3. Arraste a pasta do projeto para a área de deploy
-4. Renomeie o site para `syver` (opcional)
+2. Faça login ou crie uma conta gratuita
+3. Clique em "Add new site" > "Deploy manually"
+4. Arraste a pasta do projeto (ou selecione os arquivos) para a área de upload
+5. Aguarde o deploy
+6. Renomeie o site para `syver` (opcional, em Site Settings)
+7. Compartilhe a URL gerada pelo Netlify (ex: `https://syver.netlify.app`)
 
 ## 📝 Personalização
 
