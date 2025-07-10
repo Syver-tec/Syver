@@ -239,6 +239,12 @@ p {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
     position: relative;
     overflow: hidden;
+    padding-top: 90px;
+}
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 70px;
+  }
 }
 
 .hero::before {
@@ -1274,32 +1280,45 @@ p {
     }
 } 
 
-.logo-img {
-  height: 140px;
-  width: 140px;
-  display: block;
-  max-width: 140px;
-  max-height: 140px;
-  margin: 0 0.5rem;
-  object-fit: contain;
-}
-@media (max-width: 768px) {
-  .logo-img {
-    height: 90px;
-    width: 90px;
-    max-width: 90px;
-    max-height: 90px;
-  }
-}
-
-.nav-logo, .footer-logo {
+.nav-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.3rem 0;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.logo-img {
+  height: 100px;
+  width: 100px;
+  max-width: 100px;
+  max-height: 100px;
+  margin-top: -20px;
+  margin-bottom: -20px;
+  object-fit: contain;
+  transition: height 0.2s, max-width 0.2s;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .logo-img {
+    height: 64px;
+    width: 64px;
+    max-width: 64px;
+    max-height: 64px;
+    margin-top: -8px;
+    margin-bottom: -8px;
+  }
 }
 
 .navbar, .nav-container {
-  height: 150px;
-  min-height: 150px;
+  height: 70px;
+  min-height: 70px;
+}
+@media (max-width: 768px) {
+  .navbar, .nav-container {
+    height: 48px;
+    min-height: 48px;
+  }
 } 
