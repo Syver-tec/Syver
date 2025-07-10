@@ -1,0 +1,41 @@
+{
+  "name": "syver-website",
+  "version": "1.0.0",
+  "description": "Modern IT services website for Syver - Professional technology solutions",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "serve": "python -m http.server 8000",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "it-services",
+    "web-development",
+    "technology",
+    "consulting",
+    "automation",
+    "responsive",
+    "modern"
+  ],
+  "author": "Syver Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/syver/website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/syver/website/issues"
+  },
+  "homepage": "https://syver.com",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+} 
