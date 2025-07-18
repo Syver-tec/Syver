@@ -1322,3 +1322,19 @@ p {
     min-height: 48px;
   }
 } 
+
+#form-success, #form-newsletter-success {
+  display: none;
+  color: #25d366;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.15rem;
+  opacity: 0;
+  animation: fadeInSuccess 0.7s forwards;
+}
+
+@keyframes fadeInSuccess {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+} 

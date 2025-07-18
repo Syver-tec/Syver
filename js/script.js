@@ -99,76 +99,59 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ===== FORM HANDLING =====
-
-// Quote form submission
-if (quoteForm) {
-    quoteForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const submitBtn = quoteForm.querySelector('.submit-btn');
-        const originalText = submitBtn.innerHTML;
-        
-        // Show loading state
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        submitBtn.disabled = true;
-        
-        // Get form data
-        const formData = new FormData(quoteForm);
-        const data = Object.fromEntries(formData);
-        
-        try {
-            // Simulate API call (replace with actual endpoint)
-            await simulateFormSubmission(data);
-            
-            // Show success message
-            showNotification('Thank you! Your quote request has been submitted successfully. We\'ll get back to you within 24 hours.', 'success');
-            
-            // Reset form
-            quoteForm.reset();
-            
-        } catch (error) {
-            showNotification('Sorry, there was an error submitting your request. Please try again.', 'error');
-        } finally {
-            // Reset button
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
+// ===== FORM HANDLING (Formspree AJAX) =====
+document.addEventListener('DOMContentLoaded', function() {
+  // Orçamento
+  const quoteForm = document.getElementById('quoteForm');
+  const quoteSuccess = document.getElementById('form-success');
+  if (quoteForm && quoteSuccess) {
+    quoteForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = new FormData(quoteForm);
+      fetch(quoteForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          quoteForm.reset();
+          quoteSuccess.style.display = 'block';
+          void quoteSuccess.offsetWidth;
+          quoteSuccess.style.animation = 'fadeInSuccess 0.7s forwards';
+        } else {
+          alert('Erro ao enviar. Tente novamente.');
         }
+      }).catch(() => {
+        alert('Erro ao enviar. Tente novamente.');
+      });
     });
-}
-
-// Newsletter form submission
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const emailInput = newsletterForm.querySelector('input[type="email"]');
-        const submitBtn = newsletterForm.querySelector('button');
-        const originalText = submitBtn.innerHTML;
-        
-        // Show loading state
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-        submitBtn.disabled = true;
-        
-        try {
-            // Simulate API call
-            await simulateNewsletterSubscription(emailInput.value);
-            
-            // Show success message
-            showNotification('Thank you for subscribing to our newsletter!', 'success');
-            
-            // Reset form
-            newsletterForm.reset();
-            
-        } catch (error) {
-            showNotification('Sorry, there was an error. Please try again.', 'error');
-        } finally {
-            // Reset button
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
+  }
+  // Newsletter
+  const newsletterForm = document.getElementById('newsletterForm');
+  const newsletterSuccess = document.getElementById('form-newsletter-success');
+  if (newsletterForm && newsletterSuccess) {
+    newsletterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = new FormData(newsletterForm);
+      fetch(newsletterForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          newsletterForm.reset();
+          newsletterSuccess.style.display = 'block';
+          void newsletterSuccess.offsetWidth;
+          newsletterSuccess.style.animation = 'fadeInSuccess 0.7s forwards';
+        } else {
+          alert('Erro ao enviar. Tente novamente.');
         }
+      }).catch(() => {
+        alert('Erro ao enviar. Tente novamente.');
+      });
     });
-}
+  }
+});
 
 // ===== UTILITY FUNCTIONS =====
 

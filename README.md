@@ -7,8 +7,10 @@ Um site moderno e profissional para a empresa Syver, desenvolvido com HTML, CSS 
 ### Design & Experiência do Usuário
 - **Tema escuro moderno:** Visual limpo, com tons escuros e detalhes em azul, alinhado à identidade da marca
 - **Responsivo:** Layout mobile-first, adaptado para todos os dispositivos
-- **Animações suaves:** Efeitos de fade-in, hover e rolagem suave
-- **Tipografia profissional:** Fontes limpas e tecnológicas (Inter & Poppins)
+- **Animações suaves:** Efeitos de fade-in, hover, rolagem suave e mensagens de sucesso animadas
+- **Tipografia exclusiva:** Fonte Space Grotesk customizada para toda a identidade visual
+- **Logo personalizada:** Logo Syver em destaque no header e footer
+- **Favicons e manifestos:** Ícones para todas as plataformas e dispositivos
 
 ### Navegação & Estrutura
 - **Menu fixo:** Navegação sempre visível no topo
@@ -20,15 +22,14 @@ Um site moderno e profissional para a empresa Syver, desenvolvido com HTML, CSS 
 1. **Hero:** Chamada de impacto com animação
 2. **Projetos:** Portfólio de projetos realizados
 3. **Serviços:** Principais serviços oferecidos
-4. **Orçamento:** Formulário para solicitação de orçamento
-5. **Contato:** Informações de contato e redes sociais
-6. **Newsletter:** Cadastro para receber novidades
+4. **Orçamento:** Formulário para solicitação de orçamento (AJAX + Formspree)
+5. **Contato:** E-mail, WhatsApp e redes sociais
+6. **Newsletter:** Cadastro para receber novidades (AJAX + Formspree)
 7. **Rodapé:** Links rápidos e informações da empresa
 
 ### Interatividade
-- **Formulários funcionais:** Orçamento e newsletter prontos para integração
+- **Formulários AJAX:** Orçamento e newsletter enviam via AJAX para o Formspree, exibindo mensagem de sucesso animada sem redirecionamento
 - **Notificações:** Mensagens de sucesso/erro
-- **Feedback visual:** Estados de carregamento
 - **Acessibilidade:** Navegação por teclado e contraste adequado
 
 ## 📁 Estrutura do Projeto
@@ -41,20 +42,18 @@ Syver/
 ├── js/
 │   └── script.js           # Funcionalidades JS
 ├── assets/
-│   ├── img/                # Imagens
-│   │   └── README.md
-│   └── fonts/              # Fontes customizadas
-│       └── README.md
+│   ├── img/                # Imagens, logo, favicons, manifestos
+│   └── fonts/              # Fontes customizadas (Space Grotesk)
 ├── README.md               # Este arquivo
 ```
 
 ## 🛠️ Tecnologias Utilizadas
 
 - **HTML5:** Estrutura semântica
-- **CSS3:** Grid, Flexbox, variáveis e animações
-- **JavaScript (ES6+):** Funcionalidades interativas
+- **CSS3:** Grid, Flexbox, variáveis, animações e fontes customizadas
+- **JavaScript (ES6+):** Funcionalidades interativas e AJAX
 - **Font Awesome:** Ícones
-- **Google Fonts:** Inter e Poppins
+- **Formspree:** Recebimento de formulários sem backend
 
 ## 🎨 Paleta de Cores
 - **Fundo principal:** `#373B43`
@@ -81,13 +80,16 @@ Syver/
 
 ## 📝 Personalização
 
+- **Logo:** Substitua `assets/img/logo.png` pela sua logo
+- **Favicons:** Atualize os arquivos em `assets/img/` se quiser outros ícones
 - **Informações de contato:** Edite na seção de contato do `index.html`
 - **Serviços e projetos:** Atualize as seções correspondentes
 - **Cores e fontes:** Altere as variáveis no início do `css/style.css`
 - **Imagens:** Adicione em `assets/img/`
+- **Fontes:** Substitua ou adicione arquivos `.woff2` em `assets/fonts/` e ajuste o `@font-face` no CSS
 
 ## 🔧 Dicas de Melhoria
-- Integre formulários com serviços reais (Formspree, EmailJS, etc.)
+- Integre formulários com outros serviços se desejar (ex: EmailJS, Netlify Forms)
 - Adicione Google Analytics para monitoramento
 - Use domínio próprio para mais profissionalismo
 - Otimize imagens para melhor performance

@@ -231,7 +231,7 @@
             </div>
             
             <div class="quote-container">
-                <form class="quote-form" id="quoteForm">
+                <form class="quote-form" id="quoteForm" name="orcamento" action="https://formspree.io/f/xwpqpook" method="POST">
                     <div class="form-group">
                         <label for="fullName">Nome Completo *</label>
                         <input type="text" id="fullName" name="fullName" required>
@@ -264,6 +264,7 @@
                         <i class="fas fa-arrow-right"></i>
                     </button>
                 </form>
+                <div id="form-success" style="display:none; color: #25d366; margin-top: 1rem; text-align:center; font-weight:600;">Obrigado! Sua solicitação foi enviada com sucesso.</div>
                 
                 <div class="quote-info">
                     <h3>Por que escolher a Syver?</h3>
@@ -332,14 +333,15 @@
             <div class="newsletter-content">
                 <h3>Fique por Dentro</h3>
                 <p>Assine nossa newsletter para receber novidades e dicas de tecnologia</p>
-                <form class="newsletter-form" id="newsletterForm">
+                <form class="newsletter-form" id="newsletterForm" action="https://formspree.io/f/xdkdkggz" method="POST">
                     <div class="newsletter-input">
-                        <input type="email" placeholder="Digite seu e-mail" required>
+                        <input type="email" name="email" placeholder="Digite seu e-mail" required>
                         <button type="submit">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
                 </form>
+                <div id="form-newsletter-success" style="display:none; color: #25d366; margin-top: 1rem; text-align:center; font-weight:600;">Obrigado por se inscrever na nossa newsletter!</div>
             </div>
         </div>
     </section>
