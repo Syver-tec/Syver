@@ -441,6 +441,26 @@ p {
     line-height: 1.6;
 }
 
+/* Badge de status dos projetos */
+.projects-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.projects-actions .badge-soon {
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    padding: 1rem 2rem;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+}
+
 /* ===== SERVICES SECTION ===== */
 .services {
     padding: var(--section-padding);
@@ -1277,6 +1297,16 @@ p {
         bottom: 8px;
         font-size: 0.95rem;
         padding: 0.4rem 0.7rem;
+    }
+    
+    /* Responsividade para badge de status dos projetos */
+    .projects-actions {
+        margin-top: 2rem;
+    }
+    
+    .projects-actions .badge-soon {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
     }
 } 
 
