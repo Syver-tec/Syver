@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Página inicial -->
+  <url>
+    <loc>https://syver.tec.br/</loc>
+    <lastmod>2025-09-04</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Sobre -->
+  <url>
+    <loc>https://syver.tec.br/#sobre</loc>
+    <lastmod>2025-09-04</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Serviços / Demandas -->
+  <url>
+    <loc>https://syver.tec.br/#especialidades</loc>
+    <lastmod>2025-09-04</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Agendamentos -->
+  <url>
+    <loc>https://syver.tec.br/#agendamentos</loc>
+    <lastmod>2025-09-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contato -->
+  <url>
+    <loc>https://syver.tec.br/#contato</loc>
+    <lastmod>2025-09-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
