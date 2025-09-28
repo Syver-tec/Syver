@@ -461,6 +461,37 @@ p {
     border: 1px solid var(--border-color);
 }
 
+.projects-button {
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+.btn-projects {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #24292f, #444c56); /* gradiente GitHub dark */
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-projects i {
+    font-size: 1.3rem;
+}
+
+.btn-projects:hover {
+    background: linear-gradient(135deg, #000000, #333333);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+
 /* ===== SERVICES SECTION ===== */
 .services {
     padding: var(--section-padding);
@@ -689,6 +720,7 @@ p {
 .social-icons {
     display: flex;
     gap: 1rem;
+    justify-content: center;
 }
 
 .social-icon {
