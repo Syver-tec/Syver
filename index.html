@@ -402,7 +402,8 @@
                             <div class="portfolio-content">
                                 <h3>Psicóloga Steffani Lima</h3>
                                 <p>
-                                    Landing Page da psicóloga Steffani Lima, com foco em psicoterapia para adolescentes e adultos, utilizando abordagem centrada na pessoa.
+                                    Landing Page da psicóloga Steffani Lima, com foco em psicoterapia para adolescentes
+                                    e adultos, utilizando abordagem centrada na pessoa.
                                 </p>
                             </div>
                         </a>
@@ -416,11 +417,12 @@
                             <div class="portfolio-content">
                                 <h3>Lumina Care</h3>
                                 <p>
-                                    Uma landing page moderna e responsiva desenvolvida para uma clínica médica fictícia, criada como projeto de portfólio da Syver.
+                                    Uma landing page moderna e responsiva desenvolvida para uma clínica médica fictícia,
+                                    criada como projeto de portfólio da Syver.
                                 </p>
                             </div>
                         </a>
-                    </div> 
+                    </div>
 
                 </div>
 
@@ -455,6 +457,11 @@
                     <div class="form-group">
                         <label for="email">E-mail *</label>
                         <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Telefone *</label>
+                        <input type="tel" id="phone" name="phone" required>
                     </div>
 
                     <div class="form-group">
@@ -602,7 +609,8 @@
                         <div>
                             <h4>Redes Sociais</h4>
                             <div class="social-icons">
-                                <!-- <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a> -->
+                                <a href="https://www.instagram.com/syver.tec" target="_blank" rel="noopener"
+                                    class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
                                 <a href="https://github.com/Syver-tec" target="_blank" rel="noopener"
                                     class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
                             </div>
@@ -723,6 +731,30 @@
                 }
             }
         })
+    </script>
+
+    <script>
+        const phoneInput = document.getElementById('phone');
+
+        phoneInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+            }
+
+            if (value.length > 10) {
+                value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+            } else if (value.length > 6) {
+                value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+            } else if (value.length > 2) {
+                value = value.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+            } else if (value.length > 0) {
+                value = value.replace(/^(\d*)/, '($1');
+            }
+
+            e.target.value = value;
+        });
     </script>
 
 </body>
