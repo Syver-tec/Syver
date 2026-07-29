@@ -9,28 +9,56 @@ const newsletterForm = document.getElementById('newsletterForm');
 // ===== NAVIGATION FUNCTIONALITY =====
 
 // Mobile navigation toggle
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
-});
+if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        navToggle.classList.toggle('active');
+    });
+}
 
 // Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
+        if (navMenu && navToggle) {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+        }
     });
 });
 
-// Navbar background on scroll
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(10, 14, 26, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.background = 'rgba(10, 14, 26, 0.95)';
-        navbar.style.boxShadow = 'none';
+// Navbar background + back-to-top visibility: handler único, otimizado com
+// requestAnimationFrame e troca de classe (evita reflow/travamentos no scroll)
+let scrollTicking = false;
+
+function updateOnScroll() {
+    const scrolled = window.scrollY > 100;
+    if (navbar) {
+        navbar.classList.toggle('scrolled', scrolled);
     }
+    if (backToTopBtn) {
+        backToTopBtn.classList.toggle('visible', window.scrollY > 300);
+    }
+    scrollTicking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+        requestAnimationFrame(updateOnScroll);
+        scrollTicking = true;
+    }
+}, { passive: true });
+
+// Estado inicial (caso a página já carregue rolada)
+updateOnScroll();
+
+// Highlight active nav link based on current page + set active class
+document.addEventListener('DOMContentLoaded', () => {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link[data-page]').forEach(link => {
+        if (link.getAttribute('data-page') === currentPage) {
+            link.classList.add('active');
+        }
+    });
 });
 
 // ===== SMOOTH SCROLLING =====
@@ -54,24 +82,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // ===== BACK TO TOP BUTTON =====
 
-// Show/hide back to top button
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        backToTopBtn.style.opacity = '1';
-        backToTopBtn.style.pointerEvents = 'auto';
-    } else {
-        backToTopBtn.style.opacity = '0';
-        backToTopBtn.style.pointerEvents = 'none';
-    }
-});
-
-// Back to top functionality
-backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+// Back to top functionality (visibilidade já é controlada pelo handler de scroll acima)
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
-});
+}
 
 // ===== SCROLL ANIMATIONS =====
 
@@ -228,32 +247,8 @@ function showNotification(message, type = 'info') {
 }
 
 // ===== ENHANCED INTERACTIONS =====
-
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    
-    if (hero) {
-        const rate = scrolled * -0.5;
-        hero.style.transform = `translateY(${rate}px)`;
-    }
-});
-
-// Hover effects for cards
-document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.project-card, .service-card');
-    
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-});
+// (efeito de parallax no hero e hover via JS foram removidos: causavam
+// travamentos no scroll e conflitavam com as transições já definidas no CSS)
 
 // Typing effect for hero title (optional enhancement)
 function typeWriter(element, text, speed = 100) {
@@ -283,50 +278,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 */
 
-// ===== PERFORMANCE OPTIMIZATIONS =====
-
-// Debounce function for scroll events
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Optimized scroll handler
-const optimizedScrollHandler = debounce(() => {
-    // Navbar background logic
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(10, 14, 26, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.background = 'rgba(10, 14, 26, 0.95)';
-        navbar.style.boxShadow = 'none';
-    }
-    
-    // Back to top button logic
-    if (window.scrollY > 300) {
-        backToTopBtn.style.opacity = '1';
-        backToTopBtn.style.pointerEvents = 'auto';
-    } else {
-        backToTopBtn.style.opacity = '0';
-        backToTopBtn.style.pointerEvents = 'none';
-    }
-}, 10);
-
-window.addEventListener('scroll', optimizedScrollHandler);
-
 // ===== ACCESSIBILITY ENHANCEMENTS =====
 
 // Keyboard navigation support
 document.addEventListener('keydown', (e) => {
     // Escape key closes mobile menu
-    if (e.key === 'Escape') {
+    if (e.key === 'Escape' && navMenu && navToggle) {
         navMenu.classList.remove('active');
         navToggle.classList.remove('active');
     }
@@ -341,15 +298,17 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Focus management for mobile menu
-navToggle.addEventListener('click', () => {
-    if (navMenu.classList.contains('active')) {
-        // Focus first menu item when opening
-        const firstMenuItem = navMenu.querySelector('.nav-link');
-        if (firstMenuItem) {
-            firstMenuItem.focus();
+if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+            // Focus first menu item when opening
+            const firstMenuItem = navMenu.querySelector('.nav-link');
+            if (firstMenuItem) {
+                firstMenuItem.focus();
+            }
         }
-    }
-});
+    });
+}
 
 // ===== ERROR HANDLING =====
 
